@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:api.smashrun.com)",
+      "Bash(npm --version)",
+      "Bash(npm install *)",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(echo \"started pid=$!\")",
+      "Bash(curl -s -o /tmp/home.html -w \"HTTP %{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(lsof -iTCP:3000 -sTCP:LISTEN)",
+      "Bash(curl -s -o /tmp/config.html -w \"HTTP %{http_code}\\\\n\" http://localhost:3000/config)",
+      "Read(//tmp/**)",
+      "Bash(curl -s -o /dev/null -w \"config: HTTP %{http_code}\\\\nhome:   HTTP %{http_code}\\\\n\" http://localhost:3000/config)",
+      "Bash(curl -s -o /dev/null -w \"home:   HTTP %{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(curl -s -H 'Authorization: Bearer ____51585-UUB8+RhEXrF0hUCg5XcOeYspDNajAYvkVXgQ7BBY3tM' 'https://api.smashrun.com/v1/my/activities/search/briefs?page=0&count=3')",
+      "Bash(python3 -m json.tool)",
+      "Bash(python3 -c \"import sys, json; d=json.load\\(sys.stdin\\); print\\('ids returned:', len\\(d\\) if isinstance\\(d, list\\) else type\\(d\\).__name__\\)\")",
+      "Bash(disown)",
+      "Bash(jq)",
+      "Bash(lsof -tiTCP:3000 -sTCP:LISTEN)",
+      "Bash(xargs -r kill)"
+    ]
+  }
+}
