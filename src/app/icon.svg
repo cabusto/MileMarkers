@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Creedok">
+  <clipPath id="c"><rect width="64" height="64" rx="14"/></clipPath>
+  <g clip-path="url(#c)">
+    <rect width="64" height="64" fill="#1f2430"/>
+    <!-- dirt pile, ground, hole -->
+    <path d="M-1 42.5q7-9 15 0z" fill="#a8714b"/>
+    <rect y="42" width="64" height="22" fill="#8a5a3b"/>
+    <rect x="31" y="42" width="27" height="22" fill="#0b0d12"/>
+    <!-- person at the edge, bent at the hips, peering down -->
+    <g stroke="#f3ead8" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M24 31l-3 11M24 31l4 11"/>
+      <path d="M24 31l8-7"/>
+      <path d="M31 25l-3 9"/>
+    </g>
+    <circle cx="36.5" cy="23.5" r="4.6" fill="#f3ead8"/>
+  </g>
+</svg>

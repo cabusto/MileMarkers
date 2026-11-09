@@ -11,7 +11,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="min-h-screen">
         <header className="border-b border-black/10">
-          <a href="/" className="block max-w-3xl mx-auto px-6 py-4 font-bold text-xl tracking-tight">Creedok</a>
+          <a href="/" className="flex items-center gap-2 max-w-3xl mx-auto px-6 py-4 font-bold text-xl tracking-tight">
+            <img src="/icon.svg" alt="" width={32} height={32} />
+            Creedok
+          </a>
         </header>
         <main className="max-w-3xl mx-auto px-6 py-10">{children}</main>
         <footer className="max-w-3xl mx-auto px-6 py-10 text-xs text-black/50 space-x-4">
