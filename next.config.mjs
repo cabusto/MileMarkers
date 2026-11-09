@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === "production";
 
-// Tokens live in localStorage, so XSS is the main risk worth mitigating.
+// Defence-in-depth headers; the page has no user content, but keep it locked down.
 // - default-src 'self': only our origin
 // - script-src 'self' + 'unsafe-inline': required for Next.js RSC inline scripts. We still block external scripts, which is the protection that matters most.
-// - connect-src 'self': only same-origin. /api/refresh proxies all Smashrun calls.
+// - connect-src 'self': only same-origin; Strava calls happen server-side.
 // - frame-ancestors 'none', object-src 'none': blocks clickjacking and Flash-style embeds.
 const csp = [
   "default-src 'self'",
