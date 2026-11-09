@@ -20,7 +20,8 @@ export default function Privacy() {
       <p>
         You give consent through Strava&rsquo;s own authorization screen. Strava then notifies us when you create an
         activity. We fetch that activity to check its name (without storing it), and if it&rsquo;s still Strava&rsquo;s default (like &ldquo;Morning Run&rdquo;),
-        we change it. We use your data for nothing else. We don&rsquo;t share or sell it, and we don&rsquo;t use it for
+        we change it and add a short &ldquo;Named by Creedok&rdquo; line to the end of its description, keeping anything you
+        wrote there. We use your data for nothing else. We don&rsquo;t share or sell it, and we don&rsquo;t use it for
         analytics, advertising or AI.
       </p>
 

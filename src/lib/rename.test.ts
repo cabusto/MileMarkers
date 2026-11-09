@@ -1,6 +1,13 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { isDefaultName, pickName } from "./rename.ts";
+import { ATTRIBUTION, isDefaultName, pickName, withAttribution } from "./rename.ts";
+
+test("withAttribution keeps the athlete's description and adds the line once", () => {
+  assert.equal(withAttribution(null), ATTRIBUTION);
+  assert.equal(withAttribution(""), ATTRIBUTION);
+  assert.equal(withAttribution("Legs felt great\n"), `Legs felt great\n\n${ATTRIBUTION}`);
+  assert.equal(withAttribution(`Hi\n\n${ATTRIBUTION}`), `Hi\n\n${ATTRIBUTION}`);
+});
 
 test("detects Strava default names", () => {
   for (const n of ["Morning Run", "Lunch Ride", "Evening E-Bike Ride", "Night Walk", "Afternoon Weight Training"])

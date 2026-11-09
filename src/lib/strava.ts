@@ -1,5 +1,5 @@
 import { db } from "./db";
-import { isDefaultName, pickName } from "./rename";
+import { isDefaultName, pickName, withAttribution } from "./rename";
 import { NAMES } from "@/names";
 
 const STRAVA = "https://www.strava.com";
@@ -40,13 +40,13 @@ export async function renameIfDefault(athleteId: number, activityId: number) {
 
   const get = await fetch(url, { headers });
   if (!get.ok) throw new Error(`Strava activity fetch failed: ${get.status}`);
-  const { name } = await get.json();
+  const { name, description } = await get.json();
   if (!isDefaultName(name)) return; // athlete named it themselves
 
   const put = await fetch(url, {
     method: "PUT",
     headers: { ...headers, "Content-Type": "application/json" },
-    body: JSON.stringify({ name: newName }),
+    body: JSON.stringify({ name: newName, description: withAttribution(description) }),
   });
   if (!put.ok) throw new Error(`Strava rename failed: ${put.status}`);
 }
