@@ -1,6 +1,6 @@
 # Creedok
 
-Renames Strava activities that still have their default name ("Morning Run", "Lunch Ride"…) to a Creed lyric. Activities you name yourself are left alone.
+Live at https://creedok.netlify.app. Renames Strava activities that still have their default name ("Morning Run", "Lunch Ride"…) to a Creed lyric. Activities you name yourself are left alone.
 
 ## How it works
 
