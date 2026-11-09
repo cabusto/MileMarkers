@@ -32,7 +32,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Rec
         <h2 className="text-xl font-semibold text-black">FAQ</h2>
         <p><strong>Will it rename everything?</strong> No. Only activities with Strava&rsquo;s default name. Name it yourself and Creedok leaves it alone. Renamed activities get a short &ldquo;Named by Creedok&rdquo; line at the end of the description; anything you wrote there stays.</p>
         <p><strong>What do you store?</strong> Your Strava athlete ID and access tokens, so Creedok can rename new activities. Nothing else.</p>
-        <p><strong>How do I leave?</strong> Revoke Creedok in <a href="https://www.strava.com/settings/apps" className="underline">Strava under Settings → My Apps</a>. Creedok deletes your tokens as soon as Strava tells it you left. For written confirmation, email <a href="mailto:justinkwarren@gmail.com" className="underline">justinkwarren@gmail.com</a>.</p>
+        <p><strong>How do I leave?</strong> Revoke Creedok in <a href="https://www.strava.com/settings/apps" className="underline">Strava under Settings → My Apps</a>. Creedok deletes your tokens as soon as Strava tells it you left.</p>
       </section>
     </div>
   );
