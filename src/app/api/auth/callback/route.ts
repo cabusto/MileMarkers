@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 export async function GET(req: NextRequest) {
   const p = req.nextUrl.searchParams;
   const code = p.get("code");
-  const back = (q: string) => NextResponse.redirect(new URL(`/?${q}`, req.url));
+  const back = (q: string) => NextResponse.redirect(new URL(`/?${q}`, process.env.URL ?? req.url));
 
   // Missing code = athlete hit Cancel; state mismatch = forged/stale callback.
   if (!code || p.get("state") !== req.cookies.get("oauth_state")?.value) return back("error=cancelled");
