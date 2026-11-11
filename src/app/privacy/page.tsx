@@ -8,7 +8,7 @@ export default function Privacy() {
   return (
     <article className="space-y-6 text-black/80 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-black [&_a]:underline">
       <h1 className="text-3xl font-bold tracking-tight text-black">Privacy policy and terms</h1>
-      <p className="text-sm text-black/50">Last updated 9 November 2026</p>
+      <p className="text-sm text-black/50">Last updated 11 November 2026</p>
 
       <h2>What we collect</h2>
       <p>
@@ -25,9 +25,15 @@ export default function Privacy() {
         analytics, advertising or AI.
       </p>
 
+      <h2>Site analytics</h2>
+      <p>
+        We use PostHog (US) to count anonymous page visits and a few button clicks, like &ldquo;Connect with Strava&rdquo;, so we
+        can see where people get stuck. It sets no cookies, records no sessions, and is never linked to your Strava account.
+      </p>
+
       <h2>Where it&rsquo;s stored</h2>
       <p>
-        Tokens are stored in a Postgres database hosted by Neon (US East). The site runs on Netlify. These providers
+        Tokens are stored in a Postgres database hosted by Neon (US East). The site runs on Netlify, and anonymous site analytics go to PostHog. These providers
         process data only to run Creedok.
       </p>
 

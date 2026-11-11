@@ -20,9 +20,9 @@ export default async function Home({ searchParams }: { searchParams: Promise<Rec
         <p className="text-sm text-black/60">
           By connecting, you let Creedok read and edit your Strava activities. We store only your Strava athlete
           ID and access tokens. You can disconnect at any time, and we delete your data when you do.
-          See the <a href="/privacy" className="underline">privacy policy and terms</a>.
+          See the <a href="/privacy" className="underline" data-event="privacy_clicked">privacy policy and terms</a>.
         </p>
-        <a href="/api/auth/start" className="inline-block">
+        <a href="/api/auth/start" className="inline-block" data-event="connect_clicked">
           {/* Official Strava asset, unmodified, per Strava's brand guidelines. */}
           <img src="/btn_strava_connect_with_orange.svg" alt="Connect with Strava" width={237} height={48} />
         </a>
