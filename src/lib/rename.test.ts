@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { ATTRIBUTION, isDefaultName, pickName, withAttribution } from "./rename.ts";
+import { ATTRIBUTION, isDefaultName, nameAt, withAttribution } from "./rename.ts";
 
 test("withAttribution keeps the athlete's description and adds the line once", () => {
   assert.equal(withAttribution(null), ATTRIBUTION);
@@ -16,7 +16,7 @@ test("detects Strava default names", () => {
     assert.ok(!isDefaultName(n), n);
 });
 
-test("pickName returns null on empty list", () => {
-  assert.equal(pickName([]), null);
-  assert.equal(pickName(["only"]), "only");
+test("nameAt goes in order and wraps", () => {
+  assert.equal(nameAt([], 0), null);
+  assert.deepEqual([0, 1, 2, 3].map((i) => nameAt(["a", "b", "c"], i)), ["a", "b", "c", "a"]);
 });

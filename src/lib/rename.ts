@@ -12,5 +12,5 @@ export const withAttribution = (description: string | null | undefined) => {
   return d ? `${d}\n\n${ATTRIBUTION}` : ATTRIBUTION;
 };
 
-export const pickName =(names: string[]) =>
-  names.length ? names[Math.floor(Math.random() * names.length)] : null;
+// Each athlete walks the list top to bottom, then starts over.
+export const nameAt = (names: string[], i: number) => (names.length ? names[i % names.length] : null);
