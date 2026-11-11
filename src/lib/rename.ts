@@ -4,7 +4,8 @@ export const isDefaultName = (name: string) =>
   /^(Morning|Lunch|Afternoon|Evening|Night)( [A-Z][A-Za-z-]*){1,3}$/.test(name.trim());
 
 // Strava descriptions are plain text; it only turns full https:// URLs into links.
-export const ATTRIBUTION = "Named by Creedok · https://creedok.netlify.app";
+// utm_source lets PostHog count visitors who came from an activity.
+export const ATTRIBUTION = "Named by Creedok · https://creedok.netlify.app/?utm_source=strava";
 
 // Keeps whatever the athlete wrote; adds the attribution once, on its own line.
 export const withAttribution = (description: string | null | undefined) => {
