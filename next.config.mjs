@@ -4,7 +4,7 @@ const isProd = process.env.NODE_ENV === "production";
 // Defence-in-depth headers; the page has no user content, but keep it locked down.
 // - default-src 'self': only our origin
 // - script-src 'self' + 'unsafe-inline': required for Next.js RSC inline scripts. We still block external scripts, which is the protection that matters most.
-// - connect-src 'self': only same-origin; Strava calls happen server-side.
+// - connect-src 'self' + PostHog: Strava calls happen server-side; the browser only sends anonymous analytics events.
 // - frame-ancestors 'none', object-src 'none': blocks clickjacking and Flash-style embeds.
 const csp = [
   "default-src 'self'",
@@ -14,7 +14,7 @@ const csp = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data:",
   "font-src 'self' data:",
-  "connect-src 'self'",
+  "connect-src 'self' https://us.i.posthog.com https://us-assets.i.posthog.com",
   "frame-ancestors 'none'",
   "object-src 'none'",
   "base-uri 'self'",
