@@ -1,5 +1,5 @@
 import { db } from "./db";
-import { isDefaultName, pickName, withAttribution } from "./rename";
+import { isDefaultName, nameAt, withAttribution } from "./rename";
 import { NAMES } from "@/names";
 
 const STRAVA = "https://www.strava.com";
@@ -31,8 +31,7 @@ async function accessTokenFor(athleteId: number): Promise<string | null> {
 }
 
 export async function renameIfDefault(athleteId: number, activityId: number) {
-  const newName = pickName(NAMES);
-  if (!newName) return;
+  if (!NAMES.length) return;
   const token = await accessTokenFor(athleteId);
   if (!token) return;
   const url = `${STRAVA}/api/v3/activities/${activityId}`;
@@ -43,10 +42,16 @@ export async function renameIfDefault(athleteId: number, activityId: number) {
   const { name, description } = await get.json();
   if (!isDefaultName(name)) return; // athlete named it themselves
 
+  const sql = db();
+  const [{ next_name }] = await sql`select next_name from athletes where id = ${athleteId}`;
+  const newName = nameAt(NAMES, next_name)!;
+
   const put = await fetch(url, {
     method: "PUT",
     headers: { ...headers, "Content-Type": "application/json" },
     body: JSON.stringify({ name: newName, description: withAttribution(description) }),
   });
   if (!put.ok) throw new Error(`Strava rename failed: ${put.status}`);
+  // Advance only after a successful rename so a failed one doesn't skip a line.
+  await sql`update athletes set next_name = ${next_name + 1} where id = ${athleteId}`;
 }
