@@ -14,6 +14,8 @@ export function GET(req: NextRequest) {
 // shortcut: renames inline; Strava wants a reply within 2s and retries otherwise (a retry is harmless,
 // the name is no longer a default). Move to a background job if renames start timing out.
 export async function POST(req: NextRequest) {
+  // Strava doesn't sign events; the key in the registered callback_url proves the sender (athlete IDs are public).
+  if (req.nextUrl.searchParams.get("key") !== process.env.STRAVA_VERIFY_TOKEN) return new Response("Forbidden", { status: 403 });
   const e = await req.json();
   if (e.object_type === "activity" && e.aspect_type === "create") {
     await renameIfDefault(e.owner_id, e.object_id);
