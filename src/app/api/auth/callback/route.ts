@@ -13,11 +13,16 @@ export async function GET(req: NextRequest) {
   if (!code || p.get("state") !== req.cookies.get("oauth_state")?.value) return back("error=cancelled");
   if (!(p.get("scope") ?? "").includes("activity:write")) return back("error=scope");
 
-  const t = await exchangeToken({ code, grant_type: "authorization_code" });
-  await db()`insert into athletes (id, access_token, refresh_token, expires_at)
-             values (${t.athlete!.id}, ${t.access_token}, ${t.refresh_token}, ${t.expires_at})
-             on conflict (id) do update set access_token = excluded.access_token,
-               refresh_token = excluded.refresh_token, expires_at = excluded.expires_at`;
+  try {
+    const t = await exchangeToken({ code, grant_type: "authorization_code" });
+    await db()`insert into athletes (id, access_token, refresh_token, expires_at)
+               values (${t.athlete!.id}, ${t.access_token}, ${t.refresh_token}, ${t.expires_at})
+               on conflict (id) do update set access_token = excluded.access_token,
+                 refresh_token = excluded.refresh_token, expires_at = excluded.expires_at`;
+  } catch (err) {
+    console.error(err); // e.g. a reloaded callback reuses its one-time code
+    return back("error=failed");
+  }
 
   const res = back("connected=1");
   res.cookies.delete("oauth_state");

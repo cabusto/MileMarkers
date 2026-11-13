@@ -2,6 +2,7 @@ const MESSAGES: Record<string, string> = {
   connected: "You're in. Post an activity with Strava's default name and watch what happens.",
   cancelled: "Connection cancelled. No harm done.",
   scope: "Creedok needs permission to edit your activities. Try again and leave that box ticked.",
+  failed: "Something went wrong connecting to Strava. Please try again.",
 };
 
 export default async function Home({ searchParams }: { searchParams: Promise<Record<string, string>> }) {

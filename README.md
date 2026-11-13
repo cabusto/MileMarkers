@@ -20,7 +20,7 @@ Live at https://creedok.netlify.app. Renames Strava activities that still have t
 ```bash
 curl -X POST https://www.strava.com/api/v3/push_subscriptions \
   -F client_id=$STRAVA_CLIENT_ID -F client_secret=$STRAVA_CLIENT_SECRET \
-  -F callback_url=https://YOUR-SITE/api/webhook -F verify_token=$STRAVA_VERIFY_TOKEN
+  -F callback_url="https://YOUR-SITE/api/webhook?key=$STRAVA_VERIFY_TOKEN" -F verify_token=$STRAVA_VERIFY_TOKEN
 ```
 
 ## Dev
